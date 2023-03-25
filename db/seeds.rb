@@ -7,5 +7,14 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 User.delete_all
-user = User.create!(email: 'toto@toto.fr', password: 'toto1234')
-puts "User created: #{user.email}"
+Product.delete_all
+
+3.times do
+  user = User.create!(email: Faker::Internet.email, password: "123456")
+  puts "Created user #{user.email}"
+
+  2.times do
+    product = Product.create!(title: Faker::Commerce.product_name, price: rand(1.0..100.0).round(2), published: true, user_id: user.id)
+    puts "Created product #{product.title}"
+  end
+end
