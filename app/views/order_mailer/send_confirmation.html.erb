@@ -1,0 +1,12 @@
+<h1>Order: #<%= @order.id %></h1>
+
+<p>
+  You ordered: <%= @order.producta.count %> products:
+</p>
+<ul>
+  <% @order.products.each do |product| %>
+    <li>
+      <%= product.title %> - <%= number_to_currency product.price %>
+    </li>
+  <% end %>
+</ul>
