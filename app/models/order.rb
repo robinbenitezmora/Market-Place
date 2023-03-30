@@ -1,6 +1,8 @@
 class Order < ApplicationRecord
+  include ActiveModel::Validations
   before_validation :set_total!
-  
+
+  validates_with EnoughProductsValidator  
   has_many :placements, dependent: :destroy
   has_many :products, through: :placements
   belongs_to :user
